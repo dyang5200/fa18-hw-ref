@@ -179,8 +179,26 @@ Example 2:
 		4294967296 ** (1 / 16) (i.e., 4)
 """
 def happy_numbers(n):
-	pass
+	count = 0
+	for i in range(n + 1):
+		dict = {}
+		a = i
+		dict[i] = 1
+		while True:
+			a = numSquareSum(a, 0)
+			if a == 1:
+				count += 1
+				break
+			if a in dict:
+				break
+			dict[a] = 1
+	return count;
 
+def numSquareSum(n, sum):
+	if n < 10:
+		return sum + n*n
+	else:
+		return ( n % 10 ) ** 2 + sum + numSquareSum(n // 10 , sum)
 
 """
 zero_sum_subarray
