@@ -6,14 +6,29 @@ You might find certain default Python packages immensely helpful.
 """
 
 # Good luck!
-
+import collections
 """
 most_common_char
 
 Given an input string s, return the most common character in s.
 """
 def most_common_char(s):
-	pass
+	d = collections.defaultdict(int)
+	for char in range(len(s)):
+		d[s[char]] += 1
+	max = 0
+	char = []
+	for i in d.keys():
+		if d[i] > max:
+			max = d[i]
+			char = []
+			char.append(i)
+		if d[i] == max and char.count(i) == 0:
+			char.append(i)
+	if len(char) == 1:
+		return char[0]
+	return char
+
 
 
 """
@@ -117,7 +132,9 @@ Example:
 		1961
 """
 def alive_people(data):
-	pass
+	dict = {}
+	for i in data:
+		dict[i[0]] = i[1]
 
 
 """
